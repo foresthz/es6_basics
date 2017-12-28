@@ -1,0 +1,23 @@
+
+<script type="text/javascript">
+
+let message = ['hello', 'world', 'haha'];
+for(var i=0; i<message.length; i++) {
+	setTimeout(function(){
+		console.info('var operation ....');
+		console.info(message[i]);
+	}, 1000);
+}
+
+for(let i2=0; i2< message.length; i2++) {
+	setTimeout(function(){
+		console.info('let operation ....');
+		console.info(message[i2]);
+	}, 1000);
+}
+</script>
+
+<pre>
+	var变量共享, setTimeout里面的i和循环里面的i是同一变量,setTimeout第一次运行时,循环已经结束了.
+	let是块级变量,会分配不同的变量? 
+</pre>

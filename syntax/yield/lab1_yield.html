@@ -1,0 +1,16 @@
+
+<script type="text/javascript">
+
+function * calc() {
+	for(let i=1; i<=4; i++) {
+		yield i*i;
+	}
+}
+
+let result = calc();
+// let value = result.next().value;
+console.info(result.next().value);
+console.info(result.next().value);
+console.info(result.next().value);
+
+</script>

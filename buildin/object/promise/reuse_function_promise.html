@@ -1,0 +1,55 @@
+
+<script type="text/javascript">
+
+var task1 = new Promise(function(resolve, reject) {
+	console.info('from task1');
+	let v1 = Math.random();
+	resolve({
+		value:v1,
+		source: 'task1'
+	});
+});
+
+var task2 = new Promise(function(resolve, reject) {
+	console.info('from task2');
+	let v2 = Math.random();
+	resolve({
+		value:v2,
+		source: 'task2XX'
+	});
+});
+
+var task3 = new Promise(function(resolve, reject) {
+	console.info('from task3');
+	let v3 = Math.random();
+	resolve({
+		value:v3,
+		source:'task3'
+	})
+})
+
+function dealRandom({value, source}) {
+	console.info('---------- ', source, '--------------')
+	console.info('value: ', value);
+	if(value<0.3) {
+		console.info('tiny value');
+	} else {
+		console.info('norm value');
+	}
+}
+
+function dealRandomWrapper({value, source}) {
+	if(value>0.6) {
+		console.info('--------wrapper function-----------', source, '--------------');
+		console.info('value: ', value);
+		console.info('use wrapper function in # ', source);
+	} else {
+		dealRandom({value, source});
+	}
+}
+
+task1.then(dealRandom);
+task2.then(dealRandom);
+task3.then(dealRandomWrapper);
+
+</script>

@@ -1,0 +1,16 @@
+
+<script type="text/javascript">
+
+var task = new Promise(function(resolve, reject) {
+	let value = Math.random();
+	console.info('value: ', value);
+	if(value > 0.3 ) {
+		resolve();
+	} else {
+		reject();
+	}
+});
+
+task.then(function(){console.info('resolve invoked')}).catch(function(){console.info('reject invoked ... ')})
+
+</script>

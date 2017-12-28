@@ -7,6 +7,21 @@ function sum(a=11, b=22) {
 	console.info('sum of a+b =', a+b  );
 }
 
+function test_obj({id=111, age=100} = {}, value=99) {
+	console.info('id: ', id);
+	console.info('age: ', age);
+	console.info('value: ', value);
+}
+
 sum();
 sum(22,33);
+
+test_obj();
+test_obj({age:11,id:12});
+test_obj({age:1112}, 77);
+
 </script>
+
+<pre>
+	定义默认值,使用等号
+</pre>
