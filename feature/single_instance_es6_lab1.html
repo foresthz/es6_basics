@@ -1,0 +1,20 @@
+
+
+<script type="text/javascript">
+
+class Manager {
+	constructor() {
+	}
+
+	getInstance() {
+		if(this.instance) {
+			return this.instance;
+		} else {
+			this.instance = new Manager();
+			return this.instance;
+		}
+	}
+}
+
+let manager = new Manager();
+</script>

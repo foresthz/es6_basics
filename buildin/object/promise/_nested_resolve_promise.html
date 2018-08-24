@@ -1,0 +1,61 @@
+
+<script type="text/javascript">
+
+var CALC_TYPE = {
+	RANDOM: 1,
+	SQUARE: 2,
+	POWER:3
+}
+
+function resolve_lab1({type, base}) {
+	console.info('resolve lab1 ----------------');
+	let value;
+	switch(type) {
+		case CALC_TYPE.RANDOM :
+			value = Math.random();
+			console.info('random value: ', value*base);
+			log('hello world');
+			break;
+		case CALC_TYPE.SQUARE :
+			value = base*base;
+			console.info('square value: ', value);
+			break;
+		default:
+			value = Math.pow(base, base);
+			console.info('power value: ', value);
+	}
+}
+
+function resolve_lab2({type, base}) {
+	console.info('------------lab2, type: ', type);
+	console.info('base: ', base);
+}
+
+var log = (txt) => console.info(txt);
+
+var p1 = new Promise(function(resolve, reject) {
+	let value = Math.random();
+	console.info('choose path, value inside Promise: ', value);
+	if(value < 0.2) {
+		resolve({type:CALC_TYPE.RANDOM, base: value});
+	} else if(value < 0.7) {
+		resolve({type:CALC_TYPE.SQUARE, base: value});
+	} else {
+		resolve({type:CALC_TYPE.POWER, base: value});
+	}
+});
+
+// 函数定义独立出来了
+p1.then(resolve_lab1);
+p1.then(resolve_lab2);
+
+console.info('链式调用 ----------------------------------');
+// p1.then(resolve_lab1).then(resolve_lab2);
+// p1.then(resolve_lab1({type:CALC_TYPE.RANDOM, base: 3}));
+// p1.then(resolve_lab1({type:CALC_TYPE.power, base:3}));
+
+</script>
+
+<pre>
+	可以
+</pre>

@@ -1,0 +1,30 @@
+
+<script type="text/javascript">
+
+
+function MemberFunc(name) {
+	this.name = name;
+}
+
+MemberFunc.prototype.sayHello = function() {
+	console.info('hello', this.name);
+};
+
+let obj = new MemberFunc('MyFuncName');
+debugger;
+
+let func = {
+	sayTypeX: function() {
+		console.info('TypeX', this.name);
+	},
+	sayTypeY: function() {
+		console.info('TypeY', this.name);
+	},
+	sayTypeZ: function() {
+		console.info('TypeZ', this.name);
+	}
+}
+
+Object.assign(MemberFunc.prototype, func);
+
+</script>

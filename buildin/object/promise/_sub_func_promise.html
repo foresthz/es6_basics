@@ -1,0 +1,47 @@
+
+<script type="text/javascript">
+
+var p1 = new Promise(function(resolve, reject) {
+	let value = Math.random();
+	console.info('value: ', value);
+	console.info('resolve: ', resolve);
+	if(value < 0.2) {
+		resolve();
+		// resolve.hello1();
+	} else if(value < 0.6) {
+		// resolve.hello2();
+	} else {
+		// resolve.hello3();
+	}
+
+});
+
+function resolve_main() {
+	console.info('resolve function');
+}
+
+var func_set = {
+	hello1: function() {
+		console.info('hello1');
+	},
+	hello2: function() {
+		console.info('hello2');
+	},
+	hello3: function() {
+		console.info('hello3');
+	}
+}
+
+Object.assign(resolve_main.__proto__, func_set);
+
+p1.then(resolve_main);
+
+
+</script>
+
+<pre>
+	这里是单个参数测试,后面可以有复杂参数测试.
+	如对象.
+
+	resolve函数,无法添加属性成员函数. 添加成功,无法执行.
+</pre>

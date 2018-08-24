@@ -1,0 +1,12 @@
+<script>
+    function tag1(strings, ...values) {
+        console.info(`number of strings: %c${strings.length}`, 'color:blue;');
+        console.info(`number of values: ${values.length}`);
+        if(values.length>2) {
+            return 'too much values';
+        } else {
+            return strings.join('===');
+        }
+    }
+    tag1 `xxx${1+3}yyy${44*2}`
+</script>

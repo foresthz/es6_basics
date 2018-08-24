@@ -1,0 +1,24 @@
+<script>
+    class Tree {
+        constructor(type = 'none') {
+            this.type = type;
+        }
+    }
+
+    class BigTree extends Tree {
+        constructor(name = 'default') {
+            super('bigtree');
+            this.name = name;
+        }
+    }
+
+    class HugeTree extends BigTree {
+        constructor(size = '11') {
+            super('huge_big_series');
+            this.size = size;
+        }
+    }
+
+    let t1 = new BigTree('bg1');
+    let t2 = new HugeTree('ht2');
+</script>

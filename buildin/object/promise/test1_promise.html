@@ -2,13 +2,18 @@
 <script type="text/javascript">
 
 var task = new Promise(function(resolve, reject) {
+	console.info('before call');
 	let value = Math.random();
 	console.info('value: ', value);
-	if(value > 0.3 ) {
-		resolve();
-	} else {
-		reject();
-	}
+	setTimeout(function() {
+		if (value > 0.3) {
+			resolve();
+		} else {
+			reject();
+		}
+	}, 3000);
+	console.info('after call');
+
 });
 
 task.then(function(){console.info('resolve invoked')}).catch(function(){console.info('reject invoked ... ')})

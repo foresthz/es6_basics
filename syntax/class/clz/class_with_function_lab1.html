@@ -1,0 +1,74 @@
+
+<meta charset="utf-8">
+<script type="text/javascript">
+
+class MixedManager {
+	hello() {
+
+	}
+}
+
+function MyClass(name) {
+	this.name = name;
+	let ItemClass = class {
+		constructor(name) {
+			this.name = name;
+		}
+	};
+
+
+	class LabItem{
+		constructor(name) {
+			this.labname = name;
+		}
+		sayHello() {
+			console.info('labname', this.labname);
+		}
+	}
+
+	function FClass(name) {
+		this.fname = name;
+
+		class MyFItem {
+			constructor(name) {
+				this.myfitem_name = name;
+			}
+		}
+
+		this.fitem_obj = new MyFItem('fffff name');
+	}
+
+	function N2(name) {
+		this.n2_name = name;
+
+		function N3(name) {
+			this.n3_name = name;
+
+			class X4Class {
+				constructor(name) {
+					this.x4_name = name;
+					this.x4_num = Math.random();
+				}
+			}
+
+			this.x4_obj = new X4Class('x4 obj init');
+		}
+
+		this.n3_obj = new N3('n3 clz init');
+	}
+
+	this.n2_super = new N2('Super N2 nested Example');
+
+	this.fitem = new FClass('my fitem');
+
+	this.lab_item = new LabItem('lab item zero');
+	this.items = new ItemClass('my_item_class');
+}
+
+let obj = new MyClass('myclass');
+
+</script>
+
+<pre>
+	无法在class定义内部混合function声明定义.
+</pre>

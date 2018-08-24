@@ -1,4 +1,5 @@
 
+	
 <script type="text/javascript">
 
 function sum(a=11, b=22) {
@@ -7,18 +8,30 @@ function sum(a=11, b=22) {
 	console.info('sum of a+b =', a+b  );
 }
 
+// 默认值对象不能使用分号?
 function test_obj({id=111, age=100} = {}, value=99) {
 	console.info('id: ', id);
 	console.info('age: ', age);
 	console.info('value: ', value);
 }
 
+function partial_default({repeat=1, name} = {}) {
+	console.info('partial default ------------ ');
+	console.info('repeat velue: ', repeat);
+	console.info('name: ', name);
+}
+
 sum();
 sum(22,33);
 
+console.info('no argument');
 test_obj();
 test_obj({age:11,id:12});
 test_obj({age:1112}, 77);
+
+console.info('partial test');
+partial_default({name: 'forest'})
+partial_default({name: 'forest', repeat: 111})
 
 </script>
 

@@ -1,0 +1,86 @@
+
+
+<button id="btn_array_lab1">处理数组1</button>
+<button id="btn_array_lab2">处理数组2</button>
+<button id="btn_obj_lab1">对象1</button>
+<button id="btn_obj_lab2">对象2</button>
+<button id="btn_obj_lab3">对象3</button>
+
+
+
+<script type="text/javascript">
+
+
+let bind = (id, func) => {
+	let node = document.getElementById(id);
+	node.addEventListener('click', func);
+}
+
+
+
+class ResolveLab {
+	constructor() {
+		this.p_array = Promise.resolve([1,2,3]);
+		this.p_obj = Promise.resolve({
+			name:'lucy',
+			age:11,
+			func: () => {
+				alert('hello world function inside obj promise');
+			}
+		});
+
+		this.then_lab1 = new Promise(function({x,y,z}){
+			console.info('from then lab1');
+		});
+
+		this.then_lab2 = new Promise(function({name, sex, age, func}, reject){
+			console.info('name: ', name);
+			// func([1,2,3]);
+		});
+		let p1 = Promise.resolve({name: 'lucy', sex: 'female', age: 22});
+		p1.then(this.then_lab2);
+		// this.then_lab2.resolve([3,5,9]);
+	}
+
+	resolveArray_lab1() {
+		console.info('resolve array lab1');
+		this.p_array.then(v => console.info(v[1]*v[1]) )
+	}
+
+	resolveArray_lab2() {
+		console.info('array lab2');
+		this.p_array.then(v => console.info('sum is :', v[0]+v[1] + v[2]));
+	}
+
+	resolveObj_lab1() {
+		console.info('from obj lab1');
+		this.p_obj.then(v => console.info('name: ', v['name']));
+	}	
+
+	resolveObj_lab2() {
+		console.info('from obj lab1');
+		this.p_obj.then(v => console.info('age: ', v['age']));
+	}
+
+	resolveObj_lab3() {
+		console.info('from obj lab3');
+		this.p_obj.then(v => {
+			// alert(v['func'])
+			v['func']();
+		});
+	}
+
+	resolve_promise_lab1() {
+		console.info('from promise lab1');
+	}
+}
+
+var lab = new ResolveLab();
+bind('btn_array_lab1', lab.resolveArray_lab1.bind(lab));
+bind('btn_array_lab2', lab.resolveArray_lab2.bind(lab));
+bind('btn_obj_lab1', lab.resolveObj_lab1.bind(lab));
+bind('btn_obj_lab2', lab.resolveObj_lab2.bind(lab));
+bind('btn_obj_lab3', lab.resolveObj_lab3.bind(lab));
+
+
+</script>
